@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2022 at 03:43 PM
+-- Generation Time: Feb 19, 2022 at 08:13 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -48,7 +48,7 @@ INSERT INTO `comments` (`Comm_No`, `U_ID`, `Date`, `Comment`, `Likes`, `Dislikes
 (5, 2, '2022-02-07 12:33:08', 'hgh', 0, 0),
 (6, 2, '2022-02-07 12:34:20', 'ff', 0, 0),
 (7, 2, '2022-02-07 15:40:45', 'comment test 4', 0, 0),
-(8, 2, '2022-02-07 15:40:45', 'comment test 4', 2, 0),
+(8, 2, '2022-02-07 15:40:45', 'comment test 4', 5, 0),
 (9, 2, '2022-02-12 18:50:49', 'another reply', 0, 0),
 (10, 2, '2022-02-12 18:50:49', 'another reply', 0, 0),
 (11, 2, '2022-02-12 18:50:49', 'another reply', 0, 0),
@@ -109,7 +109,7 @@ CREATE TABLE `teams` (
   `Subject` varchar(50) DEFAULT NULL,
   `Purpuse` text NOT NULL,
   `Members` int(11) NOT NULL,
-  `Current_Members` int(11) NOT NULL
+  `Max_Members` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -121,7 +121,8 @@ CREATE TABLE `teams` (
 CREATE TABLE `trequest` (
   `Request_ID` int(11) NOT NULL,
   `Team_ID` int(11) NOT NULL,
-  `Date` datetime NOT NULL
+  `Date` datetime NOT NULL,
+  `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -133,9 +134,12 @@ CREATE TABLE `trequest` (
 CREATE TABLE `tsearch` (
   `TSearchNo` int(11) NOT NULL,
   `U_ID` int(11) NOT NULL,
+  `Date` datetime NOT NULL,
   `Subject` int(11) NOT NULL,
   `Task` varchar(100) NOT NULL,
-  `Conditions` text DEFAULT NULL
+  `Conditions` text DEFAULT NULL,
+  `Contact1` varchar(30) NOT NULL,
+  `Contact2` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
