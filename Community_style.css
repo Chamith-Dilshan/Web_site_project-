@@ -21,10 +21,17 @@ div.comm{
 	padding:2px;
 	background-color:rgb(150,150,150)
 }
+
 div.comm1{
-	width:99%;
+	width:100%;
 	padding:2px;
 	background-color:rgb(150,150,150);
+	border: 5px solid rgb(33, 33, 33);
+}
+div.comm2{
+	width:100%;
+	padding:2px;
+	background-color:rgb(255, 255, 255);
 	border: 5px solid rgb(33, 33, 33);
 }
 div.stick{
