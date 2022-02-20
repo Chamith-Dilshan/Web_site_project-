@@ -13,8 +13,7 @@ function setComment($conn){
 	}
 }
 
-
-function setReply($conn){
+function ctrlComment($conn){
 	if(isset($_POST['submitReply'])){
 		$UID = $_POST['UID'];
 		$CommNo=$_POST['CommNo'];
@@ -44,41 +43,71 @@ function setReply($conn){
 	if(isset($_POST['getReply'])){
 		$CommNo=$_POST['CommNo'];
 
-		$sql="SELECT*FROM reply WHERE Comm_No='$CommNo'";
+		$sql="	SELECT *
+				FROM reply
+				WHERE Comm_No='$CommNo'";
+				/*LEFT JOIN users 
+				ON
+    			reply.U_ID=users.U_ID*/
 	
 		$result = $conn->query($sql);
+
+		//display replies
+
+		echo"
+		<div class='stick2'>
+			<div class='stick1'>
+				<h4>Controll pannel Replies</h4>
+				<form method='POST' action='".ctrlReply($conn)."'>
+					<label for='ReplyNo'>Enter the reply Number you wish to intaract with</label>
+					<input type=text name='ReplyNo'>
+					<input type='hidden' name='UID' value='1'>
+					<input type='hidden' name='CommNo' value='$CommNo'>
+					<br><hr>
+					<button class='comm' type='submit' name='Like'>UpVote</button>
+					<button class='comm' type='submit' name='Disike'>DownVote</button>
+				</form>
+			</div>
+
+			<h4>Replies</h4><hr class='comm'>
+				
+		";
 		while($raw=$result->fetch_assoc()){
 			echo
 				$raw['U_ID'].	
-				"     Wrote at ".$raw['Date']."<br>".
-				"Comment Number:-"
-				.$raw['Comm_No']."<br>".
+				"     replied at ".$raw['Date']."<br>".
+				"Reply Number:-"
+				.$raw['Reply_No']."<br>".
 				"<div class='comm'>".		
-					$raw['Comment']."<br><br>".
-				"</div>";
+					$raw['Reply']."<br><br>".
+				"</div><hr class='comm'>
+				<div><pre>likes ".$raw['Likes']."     Dislikes <?pre>".$raw['Dislikes']."</div><hr><br>
+
+				";
 		}
-	}
-}
+		echo"
 
-function addLike($conn){
-	if(isset($_POST['Like'])){
-		$CommNo=$_POST['CommNo'];
-
-		$sql="UPDATE comments SET Likes = Likes + 1 WHERE Comm_No= '$CommNo'";
-		$result = $conn->query($sql);
-	}
-}
-
-function addDislike($conn){
-	if(isset($_POST['Dislike'])){
-		$CommNo=$_POST['CommNo'];
 		
-		$sql="UPDATE comments SET Dislikes = Dislikes + 1 WHERE Comm_No='$CommNo'";
+		</div>";
+	}
+}
+
+function ctrlReply($conn){
+	if(isset($_POST['Like'])){
+		$ReplyNo=$_POST['ReplyNo'];
+
+		$sql="UPDATE reply SET Likes = Likes + 1 WHERE Reply_No='$ReplyNo'";
+		
+		$result = $conn->query($sql);
+	}
+	if(isset($_POST['Dislike'])){
+		$ReplyNo=$_POST['ReplyNo'];
+
+		$sql="UPDATE reply SET Dislikes = Dislikes + 1 WHERE Reply_No='$ReplyNo'";
 
 		$result = $conn->query($sql);
 	}
 }
-
 
 function getComment($conn){
 	$sql="	SELECT comments.*, users.U_Name
@@ -91,33 +120,92 @@ function getComment($conn){
 	$result = $conn->query($sql);
 	while($raw=$result->fetch_assoc()){
 		echo
-				$raw['U_Name'].	
-				"     Commented at ".$raw['Date']."<br>".
-				"Comment Number:-"
-				.$raw['Comm_No']."<br>".
-			"<div class='comm'>".		
-				$raw['Comment']."<br><br>".
-			"</div>"."<br>".
-			"likes".$raw['Likes']."    Dislikes".$raw['Dislikes']."<hr><br>";
+			"
+			<div class='comm1'>".
+					$raw['U_Name'].	
+					"     Commented at ".
+					$raw['Date']."<br>".
+					"Comment Number:-".
+					$raw['Comm_No']."<br>
+				<hr class='comm'>".
+				$raw['Comment'].
+				"<br><hr class='comm'>".
+			"<pre>  likes ".$raw['Likes']."     Dislikes <?pre>".$raw['Dislikes']."
+			</div>";
 		//identify comment for the reply
 		$thisComment=$raw['Comm_No'];	
 	}
 }
-function getReply($conn){
+//function currently not in use
+/*function getReply($conn){
+
 	$sql="SELECT*FROM reply WHERE Comm_No='$comm_No'";
 	
 	$result = $conn->query($sql);
+	echo"
+	<div class=comm2>
+	<h4>Replies</h4>
+	";
 	while($raw=$result->fetch_assoc()){
 		echo
 			$raw['U_ID'].	
 			"     Wrote at ".$raw['Date']."<br>".
-			"Comment Number:-"
-			.$raw['Comm_No']."<br>".
+			"Comment Numbe:-"
+			.$raw['Reply_No']."<br>".
 			"<div class='comm'>".		
-				$raw['Comment']."<br><br>".
-			"</div>";
+				$raw['Comment']."<br>".
+			"</div><hr><hr>";
+	}
+
+	echo"</div>";
+}*/
+
+function setTeam($conn){
+	if(isset($_POST['submitTeam'])){
+		$TName = $_POST['TName'];
+		$Leader = $_POST['Leader'];
+		$Faculty = $_POST['Faculty'];
+		$Batch = $_POST['Batch'];
+		$Subject = $_POST['Subject'];
+		$Purpuse = $_POST['Purpuse'];
+		$Members = $_POST['Members'];
+		$MaxMembers=$_POST['MaxMembers']
+
+		$sql = "INSERT INTO teams(Team_ID,Team_Name,Leader,Faculty,Batch,Subject,Purpuse,Members,Max_Members) 
+		values('$TName', '$Leader', '$Faculty','$Batch','$Subject','$Purpuse','$Members','$MaxMembers')";
+		
+		$result = $conn->query($sql);
 	}
 }
 
+function setRequest($conn){
+	if(isset($_POST['submitRequest'])){
+		$TID = $_POST['TID'];
+		$Date = $_POST['Date'];
+		$Description = $_POST['Description'];
+
+		$sql = "INSERT INTO trequest(Team_ID,Date,Description) 
+		values('$TID', '$Date', '$Description')";
+		
+		$result = $conn->query($sql);
+	}
+}
+
+function setSearch($conn){
+	if(isset($_POST['submitSearch'])){
+		$UID = $_POST['UID'];
+		$Date = $_POST['Date'];
+		$Subject = $_POST['Subject'];
+		$Task = $_POST['Task'];
+		$Conditions = $_POST['Conditions'];
+		$Con1 = $_POST['Con1'];
+		$Con2 = $_POST['Con2'];
+
+		$sql = "INSERT INTO tsearch(U_ID,Date,Subject,Task,Conditions,Contact1,Contact2) 
+		values('$UID', '$Date', '$Subject','$Task','$Conditions','$Con1','$Con2')";
+		
+		$result = $conn->query($sql);
+	}
+}
 
 ?>
