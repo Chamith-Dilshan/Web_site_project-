@@ -1,0 +1,79 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+.bg01, .bg02, .bg03 {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.bg01 {
+  background-image: url("images/first.svg");
+  min-height: 100%;
+  opacity: 0.89;
+}
+
+.bg02 {
+  background-image: url("images/circle.svg");
+  min-height: 400px;
+  opacity: 0.8;
+}
+
+.bg03 {
+  background-image: url("images/mid.svg");
+  min-height: 400px;
+  opacity: 0.98;
+}
+
+.bgCircle{
+position: relative;
+background-attachment: fixed;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.head {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: #000;
+}
+
+.head p{
+  background-color: inherit;
+  color: #fff;
+  padding: 18px;
+  font-size: 45px;
+  letter-spacing: 30px;
+}
+
+h3 {
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font: 20px "Lato", sans-serif;
+  color: #111;
+}
+
+#logoP{
+  color: #40407a;
+  padding: 18px;
+  font-size: 18px;
+  letter-spacing: 5px;
+  transform: translate(15px,-255px);
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .bg01, .bg02, .bg03 {
+    background-attachment: scroll;
+  }
+}

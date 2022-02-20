@@ -251,7 +251,6 @@
   position: absolute;
   left: 5%;
   top: 25%;
-  width: 100%;
   text-align: left;
   color: #fff;
   overflow: auto;
@@ -259,7 +258,6 @@
 
 .p-left{
   position: absolute;
-  width: 100%;
   text-align: left;
   overflow: auto;
   left: 15%;
@@ -281,7 +279,6 @@
 
 .p-right{
   position: absolute;
-  width: 100%;
   text-align: right;
   overflow: auto;
   right: 15%;
