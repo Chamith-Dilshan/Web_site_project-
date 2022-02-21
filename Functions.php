@@ -190,7 +190,7 @@ function setTeam($conn){
 		$Members = $_POST['Members'];
 		$MaxMembers=$_POST['MaxMembers'];
 
-		$sql = "INSERT INTO teams(Team_ID,Team_Name,Leader,Faculty,Batch,Subject,Purpuse,Members,Max_Members) 
+		$sql = "INSERT INTO teams(Team_Name,Leader,Faculty,Batch,Subject,Purpuse,Members,Max_Members) 
 		values('$TName', '$Leader', '$Faculty','$Batch','$Subject','$Purpuse','$Members','$MaxMembers')";
 		
 		$result = $conn->query($sql);
@@ -224,6 +224,54 @@ function setSearch($conn){
 		values('$UID', '$Date', '$Subject','$Task','$Conditions','$Con1','$Con2')";
 		
 		$result = $conn->query($sql);
+	}
+}
+
+function getTeams($conn){
+	$sql="	SELECT *FROM teams";
+	
+	$result = $conn->query($sql);
+	while($raw=$result->fetch_assoc()){
+		echo"
+		<table class='team'>
+			<tr>
+				<td></td>
+				<td>".$raw['Team_ID']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Team_Name']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Leader']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Faculty']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Batch']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Subject']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Purpuse']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Members']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Max_Members']."</td>
+			</tr>
+		</table>";
+	
 	}
 }
 
