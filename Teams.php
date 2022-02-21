@@ -87,9 +87,9 @@
 
 <!--tabs-->
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Make Team</button>
+  <button class="tablinks" onclick="openCity(event, 'Paris')">Vacancies</button>
+  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Requests</button>
 </div>
 
 <div id="London" class="tabcontent">
@@ -146,6 +146,7 @@
 
            <button class="comm1" type="submit" name="submitRequest">Send</button>
          </form>';
+         //getRequest($conn)
 ?>
 </div>
 
@@ -173,6 +174,7 @@
 
            <button class="comm1" type="submit" name="submitTeam">Send</button>
          </form>';
+         //getSearch($conn)
        ?>
 </div>
 

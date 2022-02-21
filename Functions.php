@@ -275,4 +275,91 @@ function getTeams($conn){
 	}
 }
 
+function getRequest($conn){
+	$sql="	SELECT trequest.*, teams.Members, teams.MaxMembers
+	FROM trequest
+	INNER JOIN teams 
+	ON
+	trequest.Team_ID=teams.Team_ID";
+	
+	$result = $conn->query($sql);
+	while($raw=$result->fetch_assoc()){
+		echo"
+		<table class='team'>
+			<tr>
+				<td></td>
+				<td>".$raw['Request_ID']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Team_ID']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Date']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Description']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Members']."/".$raw['MaxMembers']."</td>
+
+		</table>";
+	
+	}
+}
+
+function getSearch($conn){
+	$sql="	SELECT tsearch.*, users.F_Name, users.L_Name
+	FROM tsearch
+	INNER JOIN users
+	ON
+	tsearch.U_ID=users.U_ID";;
+	
+	$result = $conn->query($sql);
+	while($raw=$result->fetch_assoc()){
+		echo"
+		<table class='team'>
+			<tr>
+				<td></td>
+				<td>".$raw['F_Name']." ".$raw['L_Name']."[".$raw['U_ID']."]"."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Date']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Subject']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Conditions']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Con1']."<br>".$raw['Con2']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Subject']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Purpuse']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Members']."</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>".$raw['Max_Members']."</td>
+			</tr>
+		</table>";
+	
+	}
+}
 ?>
