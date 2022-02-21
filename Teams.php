@@ -87,24 +87,59 @@
 		
         <?php
 
-        echo'
-		<h1>Login form</h1>
-		<form method=POST action="'.setTeam($conn).'">
-			<input type="text" name="TName">
-			<label for="Faculty">Choose your faculty:</label>
-			<select name="Faculty" size="4">
-				<option value="computing">Computing</option>
-				<option value="business">Business</option>
-				<option value="science">Science</option>
-				<option value="engineering">Engineering</option>
-			</select>
-			<input type="text" name="Batch">
-			<input type="text" name="Subject">
-			<textarea name="Purpuse" id="" cols="30" rows="10"></textarea>
-			<input type="text" name="Members">
-			<input type="text" name="CurrentMembers">
-		</form>';
+          echo'
+          <form method=POST action="'.setTeam($conn).'">
+            <label for="TName">Team Name:</label>
+            <input type="text" name="TName">
+            <label for="Faculty">Choose your faculty:</label>
+            <select name="Faculty" size="4">
+              <option value="computing">Computing</option>
+              <option value="business">Business</option>
+              <option value="science">Science</option>
+              <option value="engineering">Engineering</option>
+            </select>
+            <label for="Batch">Enter Batch:</label>
+            <input type="text" name="Batch">
+            <label for="Subject"><label>
+            <input type="text" name="Subject">
+            <label for="Purpuse">Enter the purpuse of this team:</label>
+            <textarea name="Purpuse" id="" cols="30" rows="10"></textarea>
+            <input type="text" name="Members">
+            <input type="text" name="MaxMembers">
+
+            <button class="comm1" type="submit" name="submitTeam"></button>
+          </form>';
         
+          echo'
+          <form method=POST action="'.setRequest($conn).'">
+            <label for="TID">Enter Team Name:</label>
+            <input type="text" name="TID">
+            
+            <input type="hidden" name="Date" value="'.date('Y-m-d H:i:s').'">
+            <label for="Description">Description:</label>
+            <textarea name="Description" id="" cols="30" rows="10"></textarea>
+
+            <button class="comm1" type="submit" name="submitRequest"></button>
+          </form>';
+
+          echo'
+          <form method=POST action="'.setSearch($conn).'">
+
+            <input type="hidden" name="UID" value="2">
+            <input type="hidden" name="Date" value="'.date('Y-m-d H:i:s').'">
+            <label for="Subject">Enter the Subject:</label>
+            <input type="text" name="Batch">
+            <label for="Task">The given task <label>
+            <input type="text" name="Task">
+            <label for="Purpuse">Enter your Conditions:</label>
+            <textarea name="Conditions" id="" cols="30" rows="10"></textarea>
+            <label for="Con1">Contact Info</label>
+            <input type="text" name="Con1">
+            <label for="Con2">Contact Info</label>
+            <input type="text" name="Con2">
+
+            <button class="comm1" type="submit" name="submitTeam"></button>
+          </form>';
         ?>
 	</body>
 </html>

@@ -1,5 +1,24 @@
 <?php
 
+
+function signIn($conn){
+	if(isset($_POST['submitUser'])){
+		$FName = $_POST['FName'];
+		$LName = $_POST['LName'];
+		$UName = $_POST['UName'];
+		$EMail = $_POST['EMail'];
+		$Password=$_POST['Password'];
+		$Gender=$_POST['Gender'];
+		$Batch = $_POST['Batch'];
+		$Faculty = $_POST['Faculty'];
+		
+		$sql = "INSERT INTO users(F_Name,L_Name,U_Name,E_Mail,Password,Gender,Batch,Faculty) 
+		values('$FName','$LName','$UName','$EMail',$Password','$Gender','$Batch','$Faculty')";
+		
+		$result = $conn->query($sql);
+	}
+}
+
 function setComment($conn){
 	if(isset($_POST['submitComment'])){
 		$UID = $_POST['UID'];
@@ -169,7 +188,7 @@ function setTeam($conn){
 		$Subject = $_POST['Subject'];
 		$Purpuse = $_POST['Purpuse'];
 		$Members = $_POST['Members'];
-		$MaxMembers=$_POST['MaxMembers']
+		$MaxMembers=$_POST['MaxMembers'];
 
 		$sql = "INSERT INTO teams(Team_ID,Team_Name,Leader,Faculty,Batch,Subject,Purpuse,Members,Max_Members) 
 		values('$TName', '$Leader', '$Faculty','$Batch','$Subject','$Purpuse','$Members','$MaxMembers')";
