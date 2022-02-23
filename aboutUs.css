@@ -77,3 +77,54 @@ h3 {
     background-attachment: scroll;
   }
 }
+
+/**/
+.column0 {
+  float: left;
+  width: 25%;
+  height: auto;
+  padding: 20px;
+  margin: 70px;
+  background-color: #212529;
+  transform: translate(10px);
+}
+
+.row0:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column0 h3{
+  font-family: sans-serif;
+  color: #10ac84;
+}
+
+.column0 p{
+  color: #fff;
+}
+
+.column0 img{
+  width: 120px;
+  height: 120px;
+}
+
+.column0 a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.column0 a:hover{
+  color: #10ac84;
+}
+
+#p1{
+  float: right;
+  font-family: sans-serif;
+  color: #10ac84;
+}
+@media screen and (max-width: 600px) {
+  .column0 {
+    width: 100%;
+  }
+}

@@ -6,6 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="home.css">
+    <script type="text/javascript" src="validation.js"></script>
     <title>Don't Get stuck.com</title>
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
   </head>
@@ -34,10 +35,10 @@
         <a class="nav-link" href="aboutUs.html">About Us</a>
       </li>
       <li class="log_sign">
-        <button type="submit" onclick="document.getElementById('id01').style.display='block'" style="width:auto; text-decoration:none; color:#10ac84;">Log in</button>
+        <button type="submit" onclick="document.getElementById('id01').style.display='block'; document.getElementById('id02').style.display='none'" style="width:auto; text-decoration:none; color:#10ac84;">Log in</button>
       </li>
       <li class="log_sign">
-        <button type="submit" onclick="document.getElementById('id02').style.display='block'" style="width:auto; text-decoration:none; color:#10ac84;">Sign in</button>
+        <button type="submit" onclick="document.getElementById('id02').style.display='block'; document.getElementById('id01').style.display='none'" style="width:auto; text-decoration:none; color:#10ac84;">Sign in</button>
       </li>
     </ul>
   </div>
@@ -46,33 +47,33 @@
 <!--login form-->
 <div class="loginbox" id="id01">
   <h1>Log in</h1>
-  <form method="post" action="you_can_enter_php_file_here.php" class="animate" name="frm01" onsubmit="need_to_add_a_script_file_here">
+  <form method="post" action="" class="animate" name="frm01">
     <p>Username</p>
-    <input type="text" placeholder="Enter username" name="uname" required>
+    <input type="text" placeholder="Enter username" name="uname">
     <p>Password</p>
-    <input type="password" placeholder="Enter password" name="psw" required><br>
-    <input type="submit" value="Login">
+    <input type="password" placeholder="Enter password" name="psw"><br>
+    <input type="submit" value="Login" onclick="validate1()">
     <button class="canbtn" onclick="document.getElementById('id01').style.display='none'">Cancel</button><br>
     <a href="#">forgot your password?</a><br>
-    <p class="logp">Don't have an account?<button type="button" class="btn2">Signin here.</button></p>
+    <p class="logp">Don't have an account?<button type="button" class="btn2" onclick="document.getElementById('id02').style.display='block'; document.getElementById('id01').style.display='none'">Signin here.</button></p>
   </form>
 </div>
 
   <!--signin form-->
 <div class="loginbox" id="id02" style="height:670px">
   <h1>Sign in</h1>
-  <form method="post" action="you_can_enter_php_file_here.php" class="animate" name="frm02" onsubmit="need_to_add_a_script_file_here">
+  <form method="post" action="" class="animate" name="frm02">
     <p>Username</p>
-    <input type="text" placeholder="Enter username" name="uname" required>
+    <input type="text" placeholder="Enter username" name="uname">
     <p>Email Address</p>
-    <input type="text" placeholder="Enter emailaddress" name="eaddress" required>
+    <input type="text" placeholder="Enter emailaddress" name="eaddress">
     <p>Password</p>
-    <input type="password" placeholder="Enter password" name="psw" required>
+    <input type="password" placeholder="Enter password" name="psw">
     <p>Confirm Password</p>
-    <input type="password" placeholder="ReEnter password" name="pswr" required><br>
-    <input type="submit" value="Signin">
+    <input type="password" placeholder="ReEnter password" name="pswr"><br>
+    <input type="submit" value="Signin" onclick="validate2()">
     <button class="canbtn" onclick="document.getElementById('id02').style.display='none'">Cancel</button><br>
-    <p class="logp">Have an account?<button type="button" class="btn2" onclick="document.getElementById('id01'.style.display='inherit')">Login here.</button></p>
+    <p class="logp">Have an account?<button type="button" class="btn2" onclick="document.getElementById('id01').style.display='block'; document.getElementById('id02').style.display='none' ">Login here.</button></p>
   </form>
 </div>
 
@@ -170,7 +171,7 @@
     <h3>M e n U</h3>
     <a href="home.html">Home</a><br>
     <a href="#">Languages</a><br>
-    <a href="#">Community</a><br>
+    <a href="Community.php">Community</a><br>
     <a href="aboutUs.html">About us</a><br>
   </div>
   <div class="column">

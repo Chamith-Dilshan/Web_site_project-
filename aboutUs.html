@@ -6,6 +6,7 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="aboutUs.css">
     <link rel="stylesheet" href="home.css">
+    <script type="text/javascript" src="validation.js"></script>
     <title>Don't Get stuck.com</title>
     <link rel="icon" type="image/x-icon" href="images/logo.ico">
     <title></title>
@@ -32,13 +33,13 @@
           <a class="nav-link" href="Community.php">Community</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="aboutUs">About Us</a>
+          <a class="nav-link" href="aboutUs.html">About Us</a>
         </li>
         <li class="log_sign">
-          <button type="submit" onclick="document.getElementById('id01').style.display='block'" style="width:auto; text-decoration:none; color:#10ac84;">Log in</button>
+          <button type="submit" onclick="document.getElementById('id01').style.display='block'; document.getElementById('id02').style.display='none'" style="width:auto; text-decoration:none; color:#10ac84;">Log in</button>
         </li>
         <li class="log_sign">
-          <button type="submit" onclick="document.getElementById('id02').style.display='block'" style="width:auto; text-decoration:none; color:#10ac84;">Sign in</button>
+          <button type="submit" onclick="document.getElementById('id02').style.display='block'; document.getElementById('id01').style.display='none'" style="width:auto; text-decoration:none; color:#10ac84;">Sign in</button>
         </li>
       </ul>
     </div>
@@ -47,33 +48,33 @@
   <!--login form-->
   <div class="loginbox" id="id01">
     <h1>Log in</h1>
-    <form method="post" action="you_can_enter_php_file_here.php" class="animate" name="frm01" onsubmit="need_to_add_a_script_file_here">
+    <form method="post" action="" class="animate" name="frm01">
       <p>Username</p>
-      <input type="text" placeholder="Enter username" name="uname" required>
+      <input type="text" placeholder="Enter username" name="uname">
       <p>Password</p>
-      <input type="password" placeholder="Enter password" name="psw" required><br>
-      <input type="submit" value="Login">
+      <input type="password" placeholder="Enter password" name="psw"><br>
+      <input type="submit" value="Login" onclick="validate1()">
       <button class="canbtn" onclick="document.getElementById('id01').style.display='none'">Cancel</button><br>
       <a href="#">forgot your password?</a><br>
-      <p class="logp">Don't have an account?<button type="button" class="btn2">Signin here.</button></p>
+      <p class="logp">Don't have an account?<button type="button" class="btn2" onclick="document.getElementById('id02').style.display='block'; document.getElementById('id01').style.display='none'">Signin here.</button></p>
     </form>
   </div>
 
     <!--signin form-->
   <div class="loginbox" id="id02" style="height:670px">
     <h1>Sign in</h1>
-    <form method="post" action="you_can_enter_php_file_here.php" class="animate" name="frm02" onsubmit="need_to_add_a_script_file_here">
+    <form method="post" action="" class="animate" name="frm02">
       <p>Username</p>
-      <input type="text" placeholder="Enter username" name="uname" required>
+      <input type="text" placeholder="Enter username" name="uname">
       <p>Email Address</p>
-      <input type="text" placeholder="Enter emailaddress" name="eaddress" required>
+      <input type="text" placeholder="Enter emailaddress" name="eaddress">
       <p>Password</p>
-      <input type="password" placeholder="Enter password" name="psw" required>
+      <input type="password" placeholder="Enter password" name="psw">
       <p>Confirm Password</p>
-      <input type="password" placeholder="ReEnter password" name="pswr" required><br>
-      <input type="submit" value="Signin">
+      <input type="password" placeholder="ReEnter password" name="pswr"><br>
+      <input type="submit" value="Signin" onclick="validate2()">
       <button class="canbtn" onclick="document.getElementById('id02').style.display='none'">Cancel</button><br>
-      <p class="logp">Have an account?<button type="button" class="btn2" onclick="document.getElementById('id01'.style.display='inherit')">Login here.</button></p>
+      <p class="logp">Have an account?<button type="button" class="btn2" onclick="document.getElementById('id01').style.display='block'; document.getElementById('id02').style.display='none' ">Login here.</button></p>
     </form>
   </div>
   <!--background-->
@@ -86,27 +87,50 @@
   </div>
 
   <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
-    <h3 style="text-align:center;">Bla Bla Bla Bla</h3>
-    <p>Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla
-    Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla
-  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla
-  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla
-  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla
-  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla
-  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla
-  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla
-  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla</p>
+    <h3 style="text-align:center;">Who We Are? </h3>
+    <p style="text-align:center;">We are a small group that is trying to build a knowledge base.
+       Since modern technology came and developed, anyone can access knowledge anytime and anywhere.
+       When it comes to IT, coding is a must.<br/> We are trying to build a space for people to discuss,
+       teach, and learn without boundaries. Whether you are a beginner, intermediate, or professional,
+       we would like to invite you to join us.
+    </p>
   </div>
 
   <div class="bg03">
-    <div class="head">
-    <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla</span>
-    </div>
+
+    <div class="row0">
+        <div class="column0">
+          <h3>What Do We Do?</h3>
+          <p>There are lots of interesting people and things that are currently happening around the world. These situations bring people together.
+            Also, we are always excited to go on a new adventure every day, search for something new, think about something new, and meet new people.
+            That’s why we are here. We are doing our best to bring new things through this every day. If you are satisfied with our service,
+            why don't you lend us a hand? We are always grateful to have extra help. Hence, we are inviting you to bring your knowledge, voice, and skill to share with us.
+          </p>
+        </div>
+
+        <div class="column0">
+          <img src="images/sdg-1.png" alt="sdg4">
+          <h3 id="p1">Qulity Education</h3>
+          <p>We are supporting Sustainable Development Goal #4 (Quality Education) to ensure inclusive and equitable quality
+             education throughout the world without gender, status, or any other boundaries. By having access to equal
+             education, we are trying to open and give opportunities for everyone in this world.
+           </p>
+        </div>
+
+        <div class="column0">
+          <h3>Support us</h3>
+          <a href="https://www.facebook.com/" target="_blank"><i class="bi bi-facebook" style="font-size:20px;"></i>  facebook</a><br>
+          <a href="https://twitter.com/" target="_blank"><i class="bi bi-twitter" style="font-size:20px;"></i>  twitter</a><br>
+          <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram" style="font-size:20px;"></i>  instagram</a><br>
+          <a href="https://www.github.com/" target="_blank"><i class="bi bi-github" style="font-size:20px;"></i>  github</a><br>
+        </div>
+   </div>
+
   </div>
 
   <div style="position:relative;">
     <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-    <p>  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla  Bla Bla Bla BlaBla Bla Bla BlaBla Bla Bla Bla</p>
+    <p></p>
     </div>
   </div>
 
@@ -137,7 +161,7 @@
       <h3>M e n U</h3>
       <a href="home.html">Home</a><br>
       <a href="#">Languages</a><br>
-      <a href="#">Community</a><br>
+      <a href="Community.php">Community</a><br>
       <a href="aboutUs.html">About us</a><br>
     </div>
     <div class="column">
