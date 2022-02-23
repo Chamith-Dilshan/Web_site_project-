@@ -18,17 +18,17 @@
     <link rel="stylesheet" href="Teams_style.css">
 	</head>
 	<body>
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link active" href="home.html">Home</a>
       </li>
       <li class="nav-item">
         <div class="dropdown">
           <button class="dropbtn">Languages</button>
           <div class="dropdown-content">
-            <a href="home_html.html">HTML</a>
+            <a href="#">HTML</a>
             <a href="#">CSS</a>
             <a href="#">Java Script</a>
           </div>
@@ -38,8 +38,12 @@
         <a class="nav-link" href="Community.php">Community</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
+        <a class="nav-link" href="Teams.php">Teams</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="aboutUs.html">About Us</a>
+      </li>
+
       <li class="log_sign">
         <button type="submit" onclick="document.getElementById('id01').style.display='block'" style="width:auto; text-decoration:none; color:#10ac84;">Log in</button>
       </li>
@@ -96,7 +100,7 @@
 
 <!--tabs-->
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Teams')">Teams</button>
+  <button class="tablinks" onclick="openTab(event, 'Teams')" id="defaultOpen">Teams</button>
   <button class="tablinks" onclick="openTab(event, 'Vacancies')">Vacancies</button>
   <button class="tablinks" onclick="openTab(event, 'Searches')">Searches</button>
 </div>
@@ -121,6 +125,7 @@
         <br>
 
         <div class="form2">
+        <h4> Create a Team</h4>
          <form method=POST action="'.setTeam($conn).'">
            <label for="TName">Team Name:</label>
            <input type="text" name="TName"><br>
@@ -182,6 +187,7 @@
         <br>
 
         <div class="form2">
+        <h4>Publich a Vacancy</h4>
          <form method=POST action="'.setRequest($conn).'">
            <label for="TID">Enter Team ID:</label>
            <input type="text" name="TID"><br>
@@ -220,6 +226,7 @@
         <br>
 
         <div class="form2">
+        <h4>Advertice Yourself to Join a Team</h4>
          <form method=POST action="'.setSearch($conn).'">
 
            <input type="hidden" name="UID" value="2">

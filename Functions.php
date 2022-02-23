@@ -149,12 +149,11 @@ function getComment($conn){
 				<hr>".
 				$raw['Comment'].
 				"<br><hr>".
-			"<pre>  likes ".$raw['Likes']."     Dislikes <?pre>".$raw['Dislikes']."
+			"<pre>  likes ".$raw['Likes']."     Dislikes ".$raw['Dislikes']."</pre>
 			</div>
-			<br>
+			<hr class='comm'>
+		
 			";
-		//identify comment for the reply
-		$thisComment=$raw['Comm_No'];	
 	}
 }
 //function currently not in use
@@ -249,7 +248,7 @@ function getTeams($conn){
 			<div class='team'>
 			<table class='team'>
 				<tr>
-					<td>Team ID:</td>
+					<td>Team No:</td>
 					<td>".$raw['Team_ID']."</td>
 				</tr>
 				<tr>
@@ -307,23 +306,23 @@ function getVac($conn){
 			<div class='team'>
 			<table class='team'>
 				<tr>
-					<td></td>
+					<td>Request No:</td>
 					<td>".$raw['Request_ID']."</td>
 				</tr>
 				<tr>
-					<td></td>
+					<td>Team No:</td>
 					<td>".$raw['Team_ID']."</td>
 				</tr>
 				<tr>
-					<td></td>
+					<td>Published:</td>
 					<td>".$raw['Date']."</td>
 				</tr>
 				<tr>
-					<td></td>
+					<td>Description</td>
 					<td>".$raw['Description']."</td>
 				</tr>
 				<tr>
-					<td></td>
+					<td>Members:</td>
 					<td>".$raw['Members']."/".$raw['Max_Members']."</td>
 
 			</table>
