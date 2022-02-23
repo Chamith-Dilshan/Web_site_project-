@@ -19,37 +19,41 @@
 		
 	</Head>
 	<body>
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <div class="dropdown">
-                <button class="dropbtn">Languages</button>
-                <div class="dropdown-content">
-                  <a href="home_html.html">HTML</a>
-                  <a href="#">CSS</a>
-                  <a href="#">Java Script</a>
-                </div>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Community.php">Community</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
-            </li>
-            <li class="log_sign">
-              <button type="submit" onclick="document.getElementById('id01').style.display='block'" style="width:auto; text-decoration:none; color:#10ac84;">Log in</button>
-            </li>
-            <li class="log_sign">
-              <button type="submit" onclick="document.getElementById('id02').style.display='block'" style="width:auto; text-decoration:none; color:#10ac84;">Sign in</button>
-            </li>
-          </ul>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="home.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <div class="dropdown">
+          <button class="dropbtn">Languages</button>
+          <div class="dropdown-content">
+            <a href="#">HTML</a>
+            <a href="#">CSS</a>
+            <a href="#">Java Script</a>
+          </div>
         </div>
-      </nav>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Community.php">Community</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Teams.php">Teams</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="aboutUs.html">About Us</a>
+      </li>
+
+      <li class="log_sign">
+        <button type="submit" onclick="document.getElementById('id01').style.display='block'" style="width:auto; text-decoration:none; color:#10ac84;">Log in</button>
+      </li>
+      <li class="log_sign">
+        <button type="submit" onclick="document.getElementById('id02').style.display='block'" style="width:auto; text-decoration:none; color:#10ac84;">Sign in</button>
+      </li>
+    </ul>
+  </div>
+</nav>
       
       <!--login form-->
       <div class="loginbox" id="id01">

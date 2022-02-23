@@ -146,13 +146,14 @@ function getComment($conn){
 					$raw['Date']."<br>".
 					"Comment Number:-".
 					$raw['Comm_No']."<br>
-				<hr class='comm'>".
+				<hr>".
 				$raw['Comment'].
-				"<br><hr class='comm'>".
-			"<pre>  likes ".$raw['Likes']."     Dislikes <?pre>".$raw['Dislikes']."
-			</div>";
-		//identify comment for the reply
-		$thisComment=$raw['Comm_No'];	
+				"<br><hr>".
+			"<pre>  likes ".$raw['Likes']."     Dislikes ".$raw['Dislikes']."</pre>
+			</div>
+			<hr class='comm'>
+		
+			";
 	}
 }
 //function currently not in use
@@ -177,7 +178,11 @@ function getComment($conn){
 	}
 
 	echo"</div>";
-}*/
+}
+
+
+
+*/
 
 function setTeam($conn){
 	if(isset($_POST['submitTeam'])){
@@ -190,7 +195,7 @@ function setTeam($conn){
 		$Members = $_POST['Members'];
 		$MaxMembers=$_POST['MaxMembers'];
 
-		$sql = "INSERT INTO teams(Team_ID,Team_Name,Leader,Faculty,Batch,Subject,Purpuse,Members,Max_Members) 
+		$sql = "INSERT INTO teams(Team_Name,Leader,Faculty,Batch,Subject,Purpuse,Members,Max_Members) 
 		values('$TName', '$Leader', '$Faculty','$Batch','$Subject','$Purpuse','$Members','$MaxMembers')";
 		
 		$result = $conn->query($sql);
@@ -227,4 +232,153 @@ function setSearch($conn){
 	}
 }
 
+function getTeams($conn){
+	if(isset($_POST['getTeam'])){
+		$Faculty=$_POST['Faculty'];
+
+		$sql="	SELECT *
+				FROM teams
+				WHERE Faculty='$Faculty'";
+
+		$result = $conn->query($sql);
+		echo"<div class='teams'>";
+
+		while($raw=$result->fetch_assoc()){
+			echo"
+			<div class='team'>
+			<table class='team'>
+				<tr>
+					<td>Team No:</td>
+					<td>".$raw['Team_ID']."</td>
+				</tr>
+				<tr>
+					<td>Team Name:</td>
+					<td>".$raw['Team_Name']."</td>
+				</tr>
+				<tr>
+					<td>team Lrader:</td>
+					<td>".$raw['Leader']."</td>
+				</tr>
+				<tr>
+					<td>Faculty:</td>
+					<td>".$raw['Faculty']."</td>
+				</tr>
+				<tr>
+					<td>Batch:</td>
+					<td>".$raw['Batch']."</td>
+				</tr>
+				<tr>
+					<td>Subject:</td>
+					<td>".$raw['Subject']."</td>
+				</tr>
+				<tr>
+					<td>Purpuse of This Team</td>
+					<td>".$raw['Purpuse']."</td>
+				</tr>
+				<tr>
+					<td>Members</td>
+					<td>".$raw['Members']."/".$raw['Max_Members']."</td>
+				</tr>
+			</table>
+			</div>
+			<br>
+			";
+		}
+		echo"</div>";
+	
+	}
+}
+
+function getVac($conn){
+	if(isset($_POST['getVac'])){
+		$Faculty=$_POST['Faculty'];
+
+		$sql="	SELECT trequest.*, teams.Members, teams.Max_Members
+		FROM trequest INNER JOIN teams ON trequest.Team_ID=teams.Team_ID
+		WHERE teams.Faculty='$Faculty'
+		";
+		
+		$result = $conn->query($sql);
+
+		echo"<div class='teams'>";
+		while($raw=$result->fetch_assoc()){
+			echo"
+			<div class='team'>
+			<table class='team'>
+				<tr>
+					<td>Request No:</td>
+					<td>".$raw['Request_ID']."</td>
+				</tr>
+				<tr>
+					<td>Team No:</td>
+					<td>".$raw['Team_ID']."</td>
+				</tr>
+				<tr>
+					<td>Published:</td>
+					<td>".$raw['Date']."</td>
+				</tr>
+				<tr>
+					<td>Description</td>
+					<td>".$raw['Description']."</td>
+				</tr>
+				<tr>
+					<td>Members:</td>
+					<td>".$raw['Members']."/".$raw['Max_Members']."</td>
+
+			</table>
+			</div>
+			";
+		
+		}
+		echo"</div>";
+	}
+}
+
+function getSearch($conn){
+	$sql="	SELECT tsearch.*, users.F_Name, users.L_Name
+	FROM tsearch
+	INNER JOIN users
+	ON
+	tsearch.U_ID=users.U_ID";;
+	
+	$result = $conn->query($sql);
+
+	if(isset($_POST['getSearch'])){
+
+		echo"<div class='teams'>";
+		while($raw=$result->fetch_assoc()){
+			echo"
+			<div class='team'>
+			<table class='team'>
+				<tr>
+					<td></td>
+					<td>".$raw['F_Name']." ".$raw['L_Name']."[".$raw['U_ID']."]"."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Date']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Subject']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Conditions']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Contact1']."<br>".$raw['Contact2']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Subject']."</td>
+				</tr>
+		
+			</table>";
+		
+		}
+		echo"</div>";
+	}
+}
 ?>
