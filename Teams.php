@@ -85,16 +85,42 @@
 
 </div>
 
+
+      <!--Heading and introduction-->
+      <br>
+      <div class="heading">
+          <h2>Team Up</h2>		
+      </div>
+	  <br>
+	<h5 class="intro">If you are stuck without a team, dont bother.<br>Team up with the Don't Get Stuck Community</h5>
+
 <!--tabs-->
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Make Team</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Vacancies</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Requests</button>
+  <button class="tablinks" onclick="openTab(event, 'Teams')" id="defaultOpen">Teams</button>
+  <button class="tablinks" onclick="openTab(event, 'Vacancies')">Vacancies</button>
+  <button class="tablinks" onclick="openTab(event, 'Searches')">Searches</button>
 </div>
 
-<div id="London" class="tabcontent">
+<div id="Teams" class="tabcontent">
   <?php
          echo'
+         <div class="form1">
+         <form method=POST action="'.getTeams($conn).'">
+
+          <label for="Faculty">Choose your faculty:</label>
+          <select name="Faculty" size="4">
+            <option value="computing">Computing</option>
+            <option value="business">Business</option>
+            <option value="science">Science</option>
+            <option value="engineering">Engineering</option>
+          </select><br>
+
+          <button class="comm" type="submit" name="getTeam">Display</button>
+        </form>
+        </div>
+        <br>
+
+        <div class="form2">
          <form method=POST action="'.setTeam($conn).'">
            <label for="TName">Team Name:</label>
            <input type="text" name="TName"><br>
@@ -117,7 +143,7 @@
            <input type="text" name="Subject"><br>
 
            <label for="Purpuse">Enter the purpuse of this team:</label>
-           <textarea name="Purpuse" id="" cols="30" rows="10"></textarea><br>
+           <textarea name="Purpuse" id="" cols="50" rows="4"></textarea><br>
 
            <label for="Members">Members Now:</label>
            <input type="text" name="Members"><br>
@@ -125,34 +151,75 @@
            <label for="MaxMembers">Total Members:</label>
            <input type="text" name="MaxMembers">
 
-           <button class="comm1" type="submit" name="submitTeam">Create</button>
-         </form>';
-         getTeams($conn)
+           <button class="comm" type="submit" name="submitTeam">Create</button>
+         </form>
+         </div>
+         
+         ';
+          
          
   ?>
 </div>
 
-<div id="Paris" class="tabcontent">
+<div id="Vacancies" class="tabcontent">
 <?php
          echo'
+
+         <div class="form1">
+         <form method=POST action="'.getVac($conn).'">
+
+          <label for="Faculty">Choose your faculty:</label>
+          <select name="Faculty" size="4">
+            <option value="computing">Computing</option>
+            <option value="business">Business</option>
+            <option value="science">Science</option>
+            <option value="engineering">Engineering</option>
+          </select><br>
+
+          <button class="comm" type="submit" name="getVac">Display</button>
+        </form>
+        </div>
+        <br>
+
+        <div class="form2">
          <form method=POST action="'.setRequest($conn).'">
-           <label for="TID">Enter Team Name:</label>
+           <label for="TID">Enter Team ID:</label>
            <input type="text" name="TID"><br>
            
            <input type="hidden" name="Date" value="'.date('Y-m-d H:i:s').'">
 
            <label for="Description">Description:</label>
-           <textarea name="Description" id="" cols="30" rows="10"></textarea><br>
+           <textarea name="Description" id="" cols="40" rows="4"></textarea><br>
 
-           <button class="comm1" type="submit" name="submitRequest">Send</button>
-         </form>';
+           <button class="comm" type="submit" name="submitRequest">Send</button>
+         </form>
+        </div>
+         ';
          //getRequest($conn)
 ?>
 </div>
 
-<div id="Tokyo" class="tabcontent">
+<div id="Searches" class="tabcontent">
 <?php
          echo'
+
+         <div class="form1">
+         <form method=POST action="'.getSearch($conn).'">
+
+          <label for="Faculty">Choose your faculty:</label>
+          <select name="Faculty" size="4">
+            <option value="computing">Computing</option>
+            <option value="business">Business</option>
+            <option value="science">Science</option>
+            <option value="engineering">Engineering</option>
+          </select><br>
+
+          <button class="comm" type="submit" name="getSearch">Display</button>
+        </form>
+        </div>
+        <br>
+
+        <div class="form2">
          <form method=POST action="'.setSearch($conn).'">
 
            <input type="hidden" name="UID" value="2">
@@ -164,7 +231,7 @@
            <input type="text" name="Task"><br>
 
            <label for="Purpuse">Enter your Conditions:</label>
-           <textarea name="Conditions" id="" cols="30" rows="10"></textarea><br>
+           <textarea name="Conditions" id="" cols="40" rows="4"></textarea><br>
 
            <label for="Con1">Contact Info</label>
            <input type="text" name="Con1"><br>
@@ -172,14 +239,16 @@
            <label for="Con2">Contact Info</label>
            <input type="text" name="Con2"><br>
 
-           <button class="comm1" type="submit" name="submitTeam">Send</button>
-         </form>';
+           <button class="comm" type="submit" name="submitTeam">Send</button>
+         </form>
+         </div>
+         ';
          //getSearch($conn)
        ?>
 </div>
 
 <script>
-function openCity(evt, cityName) {
+function openTab(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {

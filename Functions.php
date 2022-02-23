@@ -146,11 +146,13 @@ function getComment($conn){
 					$raw['Date']."<br>".
 					"Comment Number:-".
 					$raw['Comm_No']."<br>
-				<hr class='comm'>".
+				<hr>".
 				$raw['Comment'].
-				"<br><hr class='comm'>".
+				"<br><hr>".
 			"<pre>  likes ".$raw['Likes']."     Dislikes <?pre>".$raw['Dislikes']."
-			</div>";
+			</div>
+			<br>
+			";
 		//identify comment for the reply
 		$thisComment=$raw['Comm_No'];	
 	}
@@ -177,7 +179,11 @@ function getComment($conn){
 	}
 
 	echo"</div>";
-}*/
+}
+
+
+
+*/
 
 function setTeam($conn){
 	if(isset($_POST['submitTeam'])){
@@ -228,86 +234,104 @@ function setSearch($conn){
 }
 
 function getTeams($conn){
-	$sql="	SELECT *FROM teams";
-	
-	$result = $conn->query($sql);
-	while($raw=$result->fetch_assoc()){
-		echo"
-		<table class='team'>
-			<tr>
-				<td></td>
-				<td>".$raw['Team_ID']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Team_Name']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Leader']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Faculty']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Batch']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Subject']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Purpuse']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Members']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Max_Members']."</td>
-			</tr>
-		</table>";
+	if(isset($_POST['getTeam'])){
+		$Faculty=$_POST['Faculty'];
+
+		$sql="	SELECT *
+				FROM teams
+				WHERE Faculty='$Faculty'";
+
+		$result = $conn->query($sql);
+		echo"<div class='teams'>";
+
+		while($raw=$result->fetch_assoc()){
+			echo"
+			<div class='team'>
+			<table class='team'>
+				<tr>
+					<td>Team ID:</td>
+					<td>".$raw['Team_ID']."</td>
+				</tr>
+				<tr>
+					<td>Team Name:</td>
+					<td>".$raw['Team_Name']."</td>
+				</tr>
+				<tr>
+					<td>team Lrader:</td>
+					<td>".$raw['Leader']."</td>
+				</tr>
+				<tr>
+					<td>Faculty:</td>
+					<td>".$raw['Faculty']."</td>
+				</tr>
+				<tr>
+					<td>Batch:</td>
+					<td>".$raw['Batch']."</td>
+				</tr>
+				<tr>
+					<td>Subject:</td>
+					<td>".$raw['Subject']."</td>
+				</tr>
+				<tr>
+					<td>Purpuse of This Team</td>
+					<td>".$raw['Purpuse']."</td>
+				</tr>
+				<tr>
+					<td>Members</td>
+					<td>".$raw['Members']."/".$raw['Max_Members']."</td>
+				</tr>
+			</table>
+			</div>
+			<br>
+			";
+		}
+		echo"</div>";
 	
 	}
 }
 
-function getRequest($conn){
-	$sql="	SELECT trequest.*, teams.Members, teams.MaxMembers
-	FROM trequest
-	INNER JOIN teams 
-	ON
-	trequest.Team_ID=teams.Team_ID";
-	
-	$result = $conn->query($sql);
-	while($raw=$result->fetch_assoc()){
-		echo"
-		<table class='team'>
-			<tr>
-				<td></td>
-				<td>".$raw['Request_ID']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Team_ID']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Date']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Description']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Members']."/".$raw['MaxMembers']."</td>
+function getVac($conn){
+	if(isset($_POST['getVac'])){
+		$Faculty=$_POST['Faculty'];
 
-		</table>";
-	
+		$sql="	SELECT trequest.*, teams.Members, teams.Max_Members
+		FROM trequest INNER JOIN teams ON trequest.Team_ID=teams.Team_ID
+		WHERE teams.Faculty='$Faculty'
+		";
+		
+		$result = $conn->query($sql);
+
+		echo"<div class='teams'>";
+		while($raw=$result->fetch_assoc()){
+			echo"
+			<div class='team'>
+			<table class='team'>
+				<tr>
+					<td></td>
+					<td>".$raw['Request_ID']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Team_ID']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Date']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Description']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Members']."/".$raw['MaxMembers']."</td>
+
+			</table>
+			</div>
+			";
+		
+		}
+		echo"</div>";
 	}
 }
 
@@ -319,47 +343,54 @@ function getSearch($conn){
 	tsearch.U_ID=users.U_ID";;
 	
 	$result = $conn->query($sql);
-	while($raw=$result->fetch_assoc()){
-		echo"
-		<table class='team'>
-			<tr>
-				<td></td>
-				<td>".$raw['F_Name']." ".$raw['L_Name']."[".$raw['U_ID']."]"."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Date']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Subject']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Conditions']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Con1']."<br>".$raw['Con2']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Subject']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Purpuse']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Members']."</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td>".$raw['Max_Members']."</td>
-			</tr>
-		</table>";
-	
+
+	if(isset($_POST['getSearch'])){
+
+		echo"<div class='teams'>";
+		while($raw=$result->fetch_assoc()){
+			echo"
+			<div class='team'>
+			<table class='team'>
+				<tr>
+					<td></td>
+					<td>".$raw['F_Name']." ".$raw['L_Name']."[".$raw['U_ID']."]"."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Date']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Subject']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Conditions']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Con1']."<br>".$raw['Con2']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Subject']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Purpuse']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Members']."</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>".$raw['Max_Members']."</td>
+				</tr>
+			</table>";
+		
+		}
+		echo"</div>";
 	}
 }
 ?>

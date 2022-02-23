@@ -2,6 +2,10 @@ body {font-family: Arial;}
 
 /* Style the tab */
 .tab {
+	margin: auto;
+	width: 80%;
+	box-align: center;
+	align-items: stretch;
   overflow: hidden;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
@@ -31,10 +35,15 @@ body {font-family: Arial;}
 
 /* Style the tab content */
 .tabcontent {
-  display: none;
+	margin: auto;
+	width: 80%;
+	display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  border: 5px solid #ccc;
   border-top: none;
+  overflow-y: hidden;
 
 }
 /*Style for display teams */
@@ -47,9 +56,81 @@ table.team {
 
 td, th {
 text-align: left;
+border-bottom: 1px solid;
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color:rgb(150,150,150);
+body{
+	background-color:#ddd;
+}
+
+textarea.comm{
+	width:80%;
+	height:40px;
+}
+
+button.comm{
+	width:100px;
+	height:30px;
+	background-color:rgb(150,150,150);
+	color:rgb(256,256,256);
+	font-family:areal;
+	font-weight:400;
+	cursor:pointer;
+}
+
+div.team{
+	
+	width: fit-content;
+	padding:2px;
+	color: black;
+	background-color:#ddd;
+	border: 5px solid rgb(72, 71, 85);
+}
+
+div.teams{
+	width:40%;
+	height: 600px;
+	padding:2px;
+position: fixed;
+	right: 11%;
+	color: #ddd;
+	background-color:#2f3640;
+	border: 5px solid rgb(72, 71, 85);
+	overflow-y:auto;
+}
+div.form1{
+	width:fit-content;
+	padding:2px;
+	position: fixed,sticky;
+
+  	right: 5px;
+	color: #ddd;
+	background-color:#2f3640;
+	border: 5px solid rgb(72, 71, 85);
+}
+
+div.form2{
+	width:45%;
+	padding:2px;
+	color: #ddd;
+	background-color:#2f3640;
+	border: 5px solid rgb(72, 71, 85);
+}
+
+div.heading{
+    font-family: 'Brixton400', sans-serif;                                            
+    
+	padding:2px;
+	background-color:#7a8086;
+    text-align: center;
+    color: rgb(21, 24, 24);
+}
+.intro{
+	font-family: 'Brixton400', sans-serif;                                            
+    
+	padding:2px;
+	background-color:#ddd;
+    text-align: center;
+    color: rgb(21, 24, 24);
 }
