@@ -86,9 +86,9 @@
 </div>
 
 
-      <!--Heading and introduction-->
-      <br>
-      <div class="heading">
+<!--Heading and introduction-->
+<br>
+  <div class="heading">
           <h2>Team Up</h2>		
       </div>
 	  <br>
@@ -96,7 +96,7 @@
 
 <!--tabs-->
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'Teams')" id="defaultOpen">Teams</button>
+  <button class="tablinks" onclick="openTab(event, 'Teams')">Teams</button>
   <button class="tablinks" onclick="openTab(event, 'Vacancies')">Vacancies</button>
   <button class="tablinks" onclick="openTab(event, 'Searches')">Searches</button>
 </div>
@@ -225,7 +225,7 @@
            <input type="hidden" name="UID" value="2">
            <input type="hidden" name="Date" value="'.date('Y-m-d H:i:s').'">
            <label for="Subject">Enter the Subject:</label>
-           <input type="text" name="Batch"><br>
+           <input type="text" name="Subject"><br>
 
            <label for="Task">The given task <label>
            <input type="text" name="Task"><br>
@@ -239,7 +239,7 @@
            <label for="Con2">Contact Info</label>
            <input type="text" name="Con2"><br>
 
-           <button class="comm" type="submit" name="submitTeam">Send</button>
+           <button class="comm" type="submit" name="submitSearch">Send</button>
          </form>
          </div>
          ';

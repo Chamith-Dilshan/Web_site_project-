@@ -324,7 +324,7 @@ function getVac($conn){
 				</tr>
 				<tr>
 					<td></td>
-					<td>".$raw['Members']."/".$raw['MaxMembers']."</td>
+					<td>".$raw['Members']."/".$raw['Max_Members']."</td>
 
 			</table>
 			</div>
@@ -369,24 +369,13 @@ function getSearch($conn){
 				</tr>
 				<tr>
 					<td></td>
-					<td>".$raw['Con1']."<br>".$raw['Con2']."</td>
+					<td>".$raw['Contact1']."<br>".$raw['Contact2']."</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td>".$raw['Subject']."</td>
 				</tr>
-				<tr>
-					<td></td>
-					<td>".$raw['Purpuse']."</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>".$raw['Members']."</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>".$raw['Max_Members']."</td>
-				</tr>
+		
 			</table>";
 		
 		}
