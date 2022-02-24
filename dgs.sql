@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2022 at 08:13 PM
+-- Generation Time: Feb 24, 2022 at 12:39 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -41,18 +41,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`Comm_No`, `U_ID`, `Date`, `Comment`, `Likes`, `Dislikes`) VALUES
-(1, 2, '2022-02-07 12:16:58', 'testing \r\n', 4, 0),
-(2, 2, '2022-02-07 12:17:32', 'second test comment\r\n', 5, 0),
-(3, 2, '2022-02-07 12:27:32', 'comment test 3\r\n', 0, 0),
-(4, 2, '2022-02-07 12:32:18', 'kk', 0, 0),
-(5, 2, '2022-02-07 12:33:08', 'hgh', 0, 0),
-(6, 2, '2022-02-07 12:34:20', 'ff', 0, 0),
-(7, 2, '2022-02-07 15:40:45', 'comment test 4', 0, 0),
-(8, 2, '2022-02-07 15:40:45', 'comment test 4', 5, 0),
-(9, 2, '2022-02-12 18:50:49', 'another reply', 0, 0),
-(10, 2, '2022-02-12 18:50:49', 'another reply', 0, 0),
-(11, 2, '2022-02-12 18:50:49', 'another reply', 0, 0),
-(12, 2, '2022-02-12 18:50:49', 'another reply', 0, 0);
+(13, 2, '2022-02-24 16:13:09', 'I want div tags to be horizontally aligned. How can i make that happen', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -86,13 +75,8 @@ CREATE TABLE `reply` (
 --
 
 INSERT INTO `reply` (`Reply_No`, `Comm_No`, `U_ID`, `Date`, `Reply`, `Likes`, `Dislikes`) VALUES
-(5, 8, 1, 2022, 'Does the reply system works?', 0, 0),
-(6, 8, 1, 2022, 'Does the reply system works?', 0, 0),
-(8, 8, 1, 2022, 'does the reply system work? is the grammatically correct way', 0, 0),
-(9, 2, 1, 2022, 'can i submit a reply?', 0, 0),
-(10, 2, 1, 2022, 'can i submit a reply?', 0, 0),
-(11, 8, 1, 2022, 'test reply to fill the bar', 0, 0),
-(12, 8, 1, 2022, 'test reply to fill the bar', 0, 0);
+(13, 13, 1, 2022, 'Use css => position: fixed ; and hive petameters like top: 5px ; right: 5px; ', 0, 0),
+(14, 13, 1, 2022, 'How about including your div tags in a table and not adding a border\r\neg:- \r\n<table>\r\n<tr>\r\n<tr>\r\n<td><div>lorem ipsum</div></td><td><div>lorem ipsum ipsum ipsum</div></td>\r\n</table>', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -112,6 +96,17 @@ CREATE TABLE `teams` (
   `Max_Members` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `teams`
+--
+
+INSERT INTO `teams` (`Team_ID`, `Team_Name`, `Leader`, `Faculty`, `Batch`, `Subject`, `Purpuse`, `Members`, `Max_Members`) VALUES
+(1, 'teast2', 2, 'computing', '21.1', 'web div', 'test setTeams function', 4, 5),
+(28, 'Web Project Team 51', 2, 'computing', '21.1', 'web divelopment', 'To make a project to the final web development assignment ', 4, 5),
+(29, 'Business wadak ', 2, 'business', '21.1', 'business something', 'something something to do something', 2, 10),
+(30, 'Science wadak', 2, 'science', '21.1', 'science something', 'Something Science related? I think?', 3, 6),
+(31, 'Make a building', 2, 'engineering', '21.1', 'Building a building', 'We are building a building as we were taught by our lecturers. . ', 3, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -125,6 +120,14 @@ CREATE TABLE `trequest` (
   `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `trequest`
+--
+
+INSERT INTO `trequest` (`Request_ID`, `Team_ID`, `Date`, `Description`) VALUES
+(1, 1, '2022-02-23 15:07:25', 'A girl is needed. No qualifications necessary. being a girl is enough  '),
+(2, 28, '2022-02-24 16:48:31', 'We need a girl. Being a girl is enough. No qualifications required');
+
 -- --------------------------------------------------------
 
 --
@@ -135,12 +138,19 @@ CREATE TABLE `tsearch` (
   `TSearchNo` int(11) NOT NULL,
   `U_ID` int(11) NOT NULL,
   `Date` datetime NOT NULL,
-  `Subject` int(11) NOT NULL,
+  `Subject` varchar(30) NOT NULL,
   `Task` varchar(100) NOT NULL,
   `Conditions` text DEFAULT NULL,
   `Contact1` varchar(30) NOT NULL,
   `Contact2` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tsearch`
+--
+
+INSERT INTO `tsearch` (`TSearchNo`, `U_ID`, `Date`, `Subject`, `Task`, `Conditions`, `Contact1`, `Contact2`) VALUES
+(1, 2, '2022-02-24 12:27:53', 'Web development', 'To develop a web site for the project', 'I wan a group that has at least one other girl as a member. I\'m not comfortable being the only girl in a group ', '4737274272', 'siriyalathaa@gmial.com');
 
 -- --------------------------------------------------------
 
@@ -229,31 +239,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Comm_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Comm_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `Reply_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Reply_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `Team_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Team_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `trequest`
 --
 ALTER TABLE `trequest`
-  MODIFY `Request_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Request_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tsearch`
 --
 ALTER TABLE `tsearch`
-  MODIFY `TSearchNo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `TSearchNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
